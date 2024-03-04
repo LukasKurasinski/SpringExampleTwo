@@ -21,11 +21,21 @@ public class VehiclesController {
     @Autowired
     VehiclesService vehiclesService;
 
+    /**
+     * Returns ann of the vehicles as Json
+     * @return
+     */
     @GetMapping(value="/vehicles/", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<List<Vehicles>> getVehicles(){
         List<Vehicles> vehicles = vehiclesService.getVehicles();
         return new ResponseEntity<>(vehicles, HttpStatus.OK);
     }
+
+    /**
+     * Returns a vehicle with a specific id
+     * @param id
+     * @return
+     */
     @GetMapping(value="/vehicles/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Vehicles> getVehiclesById(@PathVariable(value = "id") Integer id){
         Optional<Vehicles> vehicles = vehiclesService.getVehiclesById(id);
@@ -36,10 +46,10 @@ public class VehiclesController {
     }
     @GetMapping(value="/vehicles/makes/{make}", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Vehicles> getVehiclesByMake(@PathVariable(value = "make") String make){
-        return null;
+        return null; //TODO
     }
     @GetMapping(value="/vehicles/models/{model}", produces = MediaType.APPLICATION_JSON_VALUE)
     List<Vehicles> getVehiclesByModel(@PathVariable(value = "model") String model){
-        return null;
+        return null;//TODO
     }
 }
